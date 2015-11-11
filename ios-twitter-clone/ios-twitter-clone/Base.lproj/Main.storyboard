@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6F-Bg-oDy">
+                                <rect key="frame" x="239" y="108" width="122" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Login with Twitter"/>
+                                <connections>
+                                    <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xGE-6e-7HI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u6F-Bg-oDy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1D5-GF-xrp"/>
+                            <constraint firstItem="u6F-Bg-oDy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="88" id="Sx0-ju-eIC"/>
+                            <constraint firstItem="u6F-Bg-oDy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rqi-6K-2qs"/>
+                            <constraint firstItem="u6F-Bg-oDy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="219" id="svr-7C-WlK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u6F-Bg-oDy" secondAttribute="trailing" constant="219" id="x6g-mj-SIy"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rqi-6K-2qs"/>
+                                <exclude reference="svr-7C-WlK"/>
+                                <exclude reference="x6g-mj-SIy"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="1D5-GF-xrp"/>
+                                <include reference="rqi-6K-2qs"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Tweets View Controller-->
+        <scene sceneID="ieL-iS-8U9">
+            <objects>
+                <viewController storyboardIdentifier="TweetsViewController" id="o5e-aZ-lVs" customClass="TweetsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f5S-GD-2EU"/>
+                        <viewControllerLayoutGuide type="bottom" id="YaU-yJ-F7Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6wI-Ex-yj2">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ofw-Zs-h8o">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YaU-yJ-F7Y" firstAttribute="top" secondItem="ofw-Zs-h8o" secondAttribute="bottom" id="ANX-vY-daN"/>
+                            <constraint firstItem="ofw-Zs-h8o" firstAttribute="top" secondItem="f5S-GD-2EU" secondAttribute="bottom" id="gU0-e0-GxN"/>
+                            <constraint firstAttribute="trailing" secondItem="ofw-Zs-h8o" secondAttribute="trailing" id="lG7-ME-2jq"/>
+                            <constraint firstItem="ofw-Zs-h8o" firstAttribute="leading" secondItem="6wI-Ex-yj2" secondAttribute="leading" id="pUw-zk-qjL"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ofw-Zs-h8o"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="gU0-e0-GxN"/>
+                                <exclude reference="lG7-ME-2jq"/>
+                                <exclude reference="pUw-zk-qjL"/>
+                                <exclude reference="ANX-vY-daN"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ofw-Zs-h8o"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="gU0-e0-GxN"/>
+                                <include reference="lG7-ME-2jq"/>
+                                <include reference="pUw-zk-qjL"/>
+                                <include reference="ANX-vY-daN"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ofw-Zs-h8o" id="AvB-W7-su4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdA-cL-Eec" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246.5" y="426"/>
+        </scene>
+    </scenes>
+</document>

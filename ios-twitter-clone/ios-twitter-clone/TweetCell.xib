@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="TweetCellId" selectionStyle="default" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="TweetCell">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="368" height="150.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ylO-Kf-hVK">
+                        <rect key="frame" x="8" y="8" width="90" height="83"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="83" id="FSX-LM-3XC"/>
+                            <constraint firstAttribute="width" constant="90" id="Hnh-eJ-2Mh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4H" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1i-ok-qQ5">
+                        <rect key="frame" x="343" y="8" width="17" height="14.5"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The tweet text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ih-Sn-yTf">
+                        <rect key="frame" x="111" y="37" width="104.5" height="19.5"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWD-f0-qaq">
+                        <rect key="frame" x="111" y="8" width="95.5" height="21.5"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="7ih-Sn-yTf" firstAttribute="top" secondItem="FWD-f0-qaq" secondAttribute="bottom" constant="7.5" id="3ig-z5-bkV"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7ih-Sn-yTf" secondAttribute="bottom" constant="8" id="434-bj-94B"/>
+                    <constraint firstItem="7ih-Sn-yTf" firstAttribute="leading" secondItem="ylO-Kf-hVK" secondAttribute="trailing" constant="13" id="9Gj-Ba-ROI"/>
+                    <constraint firstItem="ylO-Kf-hVK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="GxG-2W-v7S"/>
+                    <constraint firstItem="m1i-ok-qQ5" firstAttribute="leading" secondItem="FWD-f0-qaq" secondAttribute="trailing" constant="133" id="Ljj-Om-dmt"/>
+                    <constraint firstAttribute="trailing" secondItem="m1i-ok-qQ5" secondAttribute="trailing" constant="8" id="MxM-fH-Nqd"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ylO-Kf-hVK" secondAttribute="bottom" constant="8" id="OUr-DC-F0r"/>
+                    <constraint firstItem="m1i-ok-qQ5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FWD-f0-qaq" secondAttribute="trailing" constant="8" id="Tyc-XS-OIb"/>
+                    <constraint firstItem="m1i-ok-qQ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="VbC-L4-U2z"/>
+                    <constraint firstItem="ylO-Kf-hVK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="fdV-pB-U9r"/>
+                    <constraint firstItem="FWD-f0-qaq" firstAttribute="leading" secondItem="ylO-Kf-hVK" secondAttribute="trailing" constant="13" id="p0Y-eW-Krf"/>
+                    <constraint firstItem="FWD-f0-qaq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="pke-9m-J14"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Ljj-Om-dmt"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="timestamp" destination="m1i-ok-qQ5" id="2gD-jp-z73"/>
+                <outlet property="tweetText" destination="7ih-Sn-yTf" id="DMp-nr-meB"/>
+                <outlet property="userImage" destination="ylO-Kf-hVK" id="hf8-2j-KvZ"/>
+                <outlet property="userName" destination="FWD-f0-qaq" id="DD8-qe-qDs"/>
+            </connections>
+            <point key="canvasLocation" x="274" y="493.5"/>
+        </tableViewCell>
+    </objects>
+</document>
