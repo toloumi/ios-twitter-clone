@@ -11,7 +11,10 @@
 #import "User.h"
 #import "Tweet.h"
 #import "TweetsViewController.h"
+#import "ProfileViewController.h"
 #import "LoginViewController.h"
+#import "HamburgerViewController.h"
+#import "MenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,14 +30,24 @@
     
     User *user = [User currentUser];
     if (user != nil) {
-        TweetsViewController *tweetsController = [storyboard instantiateViewControllerWithIdentifier:@"TweetsViewController"];
-        UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:tweetsController];
-        self.window.rootViewController = nvc;
+        HamburgerViewController *hamburgerController = [storyboard instantiateViewControllerWithIdentifier:@"HamburgerViewController"];
+        ProfileViewController *profileController = [storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+        UINavigationController *tweetsNavController = [storyboard instantiateViewControllerWithIdentifier:@"TimelineNavController"];
+        [tweetsNavController setViewControllers:@[ profileController ] animated:YES];
+        MenuViewController *menuController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+        
+        //[hamburgerController setContentViewController:tweetsNavController];
+        hamburgerController.menuViewController = menuController;
+        menuController.hamburgerViewController = hamburgerController;
+        
+        //UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:hamburgerController];
+        
+        self.window.rootViewController = hamburgerController;
     } else {
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     }
     
-    //[self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

@@ -7,7 +7,6 @@
 //
 
 #import "TwitterClient.h"
-#import "Tweet.h"
 
 NSString *const kTwitterConsumerKey = @"xF7SIVh7aYxPT8BgrQkqsEvjL";
 NSString *const kTwitterConsumerSecret = @"uCAfiMOGfP2tO71eDXct3m9bLSjYFTUTdkkBuYNG47n1MP9kQ8";
@@ -84,19 +83,76 @@ NSString *const kTwitterConsumerBaseUrl = @"https://api.twitter.com";
     }];
 }
 
+- (void)mentionsTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
+    [self GET:@"1.1/statuses/mentions_timeline.json" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
 - (void)postTweet:(NSDictionary *)params completion:(void (^)(NSDictionary *, NSError *))completion {
-    //NSString *escapedString = [[NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", params[@"status"]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    [self POST:[NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", params[@"status"]] parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"1.1/statuses/update.json"];
+    NSURLQueryItem *status = [NSURLQueryItem queryItemWithName:@"status" value:params[@"status"]];
+    components.queryItems = @[ status ];
+    
+    [self POST:components.string parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         completion(responseObject, nil);
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         completion(nil, error);
     }];
 }
 
-- (void)retweetWithCompletion:(void (^)(NSDictionary *retweetResponse, NSError *error))completion {
-    //1.1/statuses/retweet/:id.json
+- (void)toggleRetweet:(Tweet *)tweet WithCompletion:(void (^)(NSDictionary *retweetResponse, NSError *error))completion {
+    //Record the retweetId(?) post to 1.1/statuses/destroy/:id.jso
+    //
+    //NSString *retweetPostUrl;
+    //
+    //if (tweet.retweeted){
+    //} else {
+    //}
+    
+    NSString *postString = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweet.tweetId];
+    
+    [self POST:postString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        completion(responseObject, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
 }
 
-- (void)favoriteWithCompletion:(void (^)(NSDictionary *favoriteResponse, NSError *error))completion {
+- (void)toggleFavoriteTweet:(Tweet *)tweet WithCompletion:(void (^)(NSDictionary *favoriteResponse, NSError *error))completion {
+    NSString *favoritePostUrl;
+    if (tweet.favorited) {
+        favoritePostUrl = @"1.1/favorites/destroy.json";
+    } else {
+        favoritePostUrl = @"1.1/favorites/create.json";
+    }
+    
+    NSURLComponents *components = [NSURLComponents componentsWithString:favoritePostUrl];
+    NSURLQueryItem *tweetId = [NSURLQueryItem queryItemWithName:@"id" value:[tweet.tweetId stringValue]];
+    components.queryItems = @[ tweetId ];
+    
+    [self POST:components.string parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        completion(responseObject, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)fetchUserById:(NSString *)userId andScreenName:(NSString *)screenName WithCompletion:(void (^)(User *user, NSError *error))completion {
+    
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"1.1/users/show.json"];
+    NSURLQueryItem *twitterId = [NSURLQueryItem queryItemWithName:@"user_id" value:userId];
+    NSURLQueryItem *twitterScreenName = [NSURLQueryItem queryItemWithName:@"screen_name" value:screenName];
+    components.queryItems = @[ twitterId, twitterScreenName ];
+    
+    [self GET:components.string parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        User *user = [[User alloc] initWithDictionary:responseObject];
+        completion(user, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
 }
 @end

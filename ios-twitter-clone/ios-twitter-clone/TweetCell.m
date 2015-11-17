@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import "TwitterClient.h"
 
 NSString *const kTweetCellId = @"TweetCellId";
 
@@ -24,6 +25,14 @@ NSString *const kTweetCellId = @"TweetCellId";
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)onImageTap:(UITapGestureRecognizer *)sender {
+    [[TwitterClient sharedInstance] fetchUserById:self.tweetUserId andScreenName:self.screenName.text WithCompletion:^(User *user, NSError *error) {
+        if (self.delegate && user) {
+            [self.delegate tweetCell:self userTouched:user];
+        }
+    }];
 }
 
 @end

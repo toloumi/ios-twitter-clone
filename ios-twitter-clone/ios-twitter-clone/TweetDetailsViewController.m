@@ -14,6 +14,8 @@
 
 @interface TweetDetailsViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *profileImage;
+@property (strong, nonatomic) IBOutlet UIButton *retweetButton;
+@property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (strong, nonatomic) IBOutlet UILabel *username;
 @property (strong, nonatomic) IBOutlet UILabel *tweetText;
 @property (strong, nonatomic) Tweet *tweet;
@@ -37,6 +39,8 @@
     [_profileImage setImageWithURL:[NSURL URLWithString:self.tweet.author.profileImageUrl]];
     _username.text = self.tweet.author.name;
     _tweetText.text = self.tweet.text;
+    _favoriteButton.selected = self.tweet.favorited;
+    _retweetButton.selected = self.tweet.retweeted;
     
     self.title = @"Tweet";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
@@ -52,9 +56,17 @@
 }
 
 - (IBAction)onRetweet:(id)sender {
+    [[TwitterClient sharedInstance] toggleRetweet:self.tweet WithCompletion:^(NSDictionary *retweetResponse, NSError *error) {
+        self.retweetButton.selected = !self.retweetButton.selected;
+        //NSLog(@"%@",retweetResponse);
+    }];
 }
 
 - (IBAction)onFavorite:(id)sender {
+    [[TwitterClient sharedInstance] toggleFavoriteTweet:self.tweet WithCompletion:^(NSDictionary *favoriteResponse, NSError *error) {
+        //NSLog(@"%@",favoriteResponse);
+        self.favoriteButton.selected = !self.favoriteButton.selected;
+    }];
 }
 
 /*

@@ -23,6 +23,9 @@
     
     if (self) {
         self.text = dictionary[@"text"];
+        self.tweetId = dictionary[@"id"];
+        self.favorited = [dictionary[@"favorited"] boolValue];
+        self.retweeted = [dictionary[@"retweeted"] boolValue];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         self.createdAt = [formatter dateFromString:dictionary[@"created_at"]];

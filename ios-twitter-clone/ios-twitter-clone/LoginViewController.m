@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 #import "TweetsViewController.h"
+#import "HamburgerViewController.h"
+#import "MenuViewController.h"
 
 @interface LoginViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
@@ -20,9 +22,17 @@
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user != nil) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            HamburgerViewController *hamburgerController = [storyboard instantiateViewControllerWithIdentifier:@"HamburgerViewController"];
             TweetsViewController *tweetsController = [storyboard instantiateViewControllerWithIdentifier:@"TweetsViewController"];
-            UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:tweetsController];
-            [self presentViewController:nvc animated:YES completion:nil];
+            UINavigationController *tweetsNavController = [storyboard instantiateViewControllerWithIdentifier:@"TimelineNavController"];
+            [tweetsNavController pushViewController:tweetsController animated:YES];
+            MenuViewController *menuController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+            
+            [hamburgerController setContentViewController:tweetsNavController];
+            hamburgerController.menuViewController = menuController;
+            menuController.hamburgerViewController = hamburgerController;
+            
+            [self presentViewController:hamburgerController animated:YES completion:nil];
         } else {
             // Present error view
             NSLog(@"Got user completion with error");

@@ -13,9 +13,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="368" height="150.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ylO-Kf-hVK">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="ylO-Kf-hVK">
                         <rect key="frame" x="8" y="8" width="90" height="83"/>
                         <animations/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="height" constant="83" id="FSX-LM-3XC"/>
                             <constraint firstAttribute="width" constant="90" id="Hnh-eJ-2Mh"/>
@@ -28,8 +29,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The tweet text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ih-Sn-yTf">
-                        <rect key="frame" x="111" y="37" width="104.5" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The tweet text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ih-Sn-yTf">
+                        <rect key="frame" x="111" y="55" width="104.5" height="19.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,21 +43,31 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@screenName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ley-rg-ZWr">
+                        <rect key="frame" x="116" y="30" width="94" height="17"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.55456912878787867" green="0.54640304897143888" blue="0.53931843444803351" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="7ih-Sn-yTf" firstAttribute="top" secondItem="FWD-f0-qaq" secondAttribute="bottom" constant="7.5" id="3ig-z5-bkV"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7ih-Sn-yTf" secondAttribute="bottom" constant="8" id="434-bj-94B"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7ih-Sn-yTf" secondAttribute="trailing" constant="8" id="8j1-sa-XcP"/>
                     <constraint firstItem="7ih-Sn-yTf" firstAttribute="leading" secondItem="ylO-Kf-hVK" secondAttribute="trailing" constant="13" id="9Gj-Ba-ROI"/>
                     <constraint firstItem="ylO-Kf-hVK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="GxG-2W-v7S"/>
                     <constraint firstItem="m1i-ok-qQ5" firstAttribute="leading" secondItem="FWD-f0-qaq" secondAttribute="trailing" constant="133" id="Ljj-Om-dmt"/>
                     <constraint firstAttribute="trailing" secondItem="m1i-ok-qQ5" secondAttribute="trailing" constant="8" id="MxM-fH-Nqd"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ylO-Kf-hVK" secondAttribute="bottom" constant="8" id="OUr-DC-F0r"/>
+                    <constraint firstItem="7ih-Sn-yTf" firstAttribute="top" secondItem="Ley-rg-ZWr" secondAttribute="bottom" constant="8" id="OhI-JJ-ki9"/>
                     <constraint firstItem="m1i-ok-qQ5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FWD-f0-qaq" secondAttribute="trailing" constant="8" id="Tyc-XS-OIb"/>
                     <constraint firstItem="m1i-ok-qQ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="VbC-L4-U2z"/>
+                    <constraint firstItem="Ley-rg-ZWr" firstAttribute="top" secondItem="FWD-f0-qaq" secondAttribute="bottom" constant="0.5" id="Yg4-dV-1Jd"/>
                     <constraint firstItem="ylO-Kf-hVK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="fdV-pB-U9r"/>
                     <constraint firstItem="FWD-f0-qaq" firstAttribute="leading" secondItem="ylO-Kf-hVK" secondAttribute="trailing" constant="13" id="p0Y-eW-Krf"/>
                     <constraint firstItem="FWD-f0-qaq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="pke-9m-J14"/>
+                    <constraint firstItem="Ley-rg-ZWr" firstAttribute="leading" secondItem="ylO-Kf-hVK" secondAttribute="trailing" constant="18" id="vmX-Bu-Ajw"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -66,6 +77,7 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
+                <outlet property="screenName" destination="Ley-rg-ZWr" id="IGP-7l-iP1"/>
                 <outlet property="timestamp" destination="m1i-ok-qQ5" id="2gD-jp-z73"/>
                 <outlet property="tweetText" destination="7ih-Sn-yTf" id="DMp-nr-meB"/>
                 <outlet property="userImage" destination="ylO-Kf-hVK" id="hf8-2j-KvZ"/>

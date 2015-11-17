@@ -45,7 +45,6 @@
 }
 
 - (void)onTweet {
-    //Post tweet using method on TwitterClient
     [[TwitterClient sharedInstance] postTweet:@{@"status":self.tweetText.text} completion:^(NSDictionary *tweetResponse, NSError *error) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];

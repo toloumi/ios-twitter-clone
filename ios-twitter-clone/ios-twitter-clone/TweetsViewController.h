@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TweetsViewController : UIViewController
+- (void)setupWithHomeTimeline;
+- (void)setupWithMentionsTimeline;
 
 @end
